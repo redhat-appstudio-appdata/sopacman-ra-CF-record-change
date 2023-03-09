@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/instance: mongo-mongo-pacman-jzdi
     spec:
       containers:
-      - image: quay.io/redhat-appstudio/user-workload:ra-CF-mongo-mongo-pacman-jzdi
+      - image: quay.io/redhat-appstudio/user-workload@sha256:387165cd2c4436562df5ee72d9fa080923a35e4f7eb4decdd4f76d79c015d457
         imagePullPolicy: Always
         name: container-image
         ports:
