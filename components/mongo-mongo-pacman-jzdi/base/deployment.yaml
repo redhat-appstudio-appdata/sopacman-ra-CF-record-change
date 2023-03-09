@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: mongo-mongo-pacman-jzdi
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: mongo-mongo-pacman-jzdi
+    app.kubernetes.io/part-of: sopacman
+  name: mongo-mongo-pacman-jzdi
+  namespace: somalley-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: mongo-mongo-pacman-jzdi
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: mongo-mongo-pacman-jzdi
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:ra-CF-mongo-mongo-pacman-jzdi
+        imagePullPolicy: Always
+        name: container-image
+        ports:
+        - containerPort: 27017
+        resources:
+          limits:
+            cpu: 100m
+            memory: 512Mi
+          requests:
+            cpu: 10m
+            memory: 512Mi
+status: {}
