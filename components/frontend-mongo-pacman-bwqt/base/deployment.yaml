@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: frontend-mongo-pacman-bwqt
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: frontend-mongo-pacman-bwqt
+    app.kubernetes.io/part-of: sopacman
+  name: frontend-mongo-pacman-bwqt
+  namespace: somalley-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: frontend-mongo-pacman-bwqt
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: frontend-mongo-pacman-bwqt
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+        image: quay.io/redhat-appstudio/user-workload:ra-CF-frontend-mongo-pacman-bwqt
+        imagePullPolicy: Always
+        name: container-image
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
